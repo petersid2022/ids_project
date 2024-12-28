@@ -34,3 +34,5 @@ services:
       MYSQL_DATABASE: Articles
     ports:
       - "3307:3306"
+    expose:
+      - 3306
