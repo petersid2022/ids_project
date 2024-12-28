@@ -9,6 +9,8 @@ services:
       - "80:80"
     depends_on:
       - server
+    volumes:
+      - ./client:/usr/share/nginx/html/
 
   server:
     build:
