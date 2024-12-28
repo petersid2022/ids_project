@@ -32,7 +32,7 @@ func main() {
 }
 
 func initDB() (*sql.DB, error) {
-	db, err := sql.Open("mysql", "petrside:asfaleia@/Articles")
+	db, err := sql.Open("mysql", "ids_project_2024:ids_project_2024@tcp(db:3306)/Articles")
 	if err != nil {
 		return nil, err
 	}
@@ -66,8 +66,7 @@ func handlePost(db *sql.DB) http.HandlerFunc {
 				return
 			}
 
-			// Safe:
-			// _, err := db.Exec("INSERT INTO Posts (title, content) VALUES (?, ?)", post.Title, post.Content)
+			// Safe: _, err := db.Exec("INSERT INTO Posts (title, content) VALUES (?, ?)", post.Title, post.Content)
 			// see: https://go.dev/doc/database/sql-injection
 			payload := fmt.Sprintf("INSERT INTO Posts (title, content) VALUES ('%s', '%s')", post.Title, post.Content)
 			log.Println(payload)
