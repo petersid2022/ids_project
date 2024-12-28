@@ -32,7 +32,8 @@ func main() {
 }
 
 func initDB() (*sql.DB, error) {
-	db, err := sql.Open("mysql", "ids_project_2024:ids_project_2024@tcp(db:3306)/Articles")
+	// https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-parameters
+	db, err := sql.Open("mysql", "ids_project_2024:ids_project_2024@tcp(db:3306)/Articles?multiStatements=true")
 	if err != nil {
 		return nil, err
 	}
