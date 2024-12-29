@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   client:
     build:
@@ -21,12 +19,12 @@ services:
     volumes:
       - ./server:/app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   db:
     image: mysql:5.7.26
-    container_name: mysql
-    command: --init-file /docker-entrypoint-initdb.d/setup.sql
+    command: --init-file /docker-entrypoint-initdb.d/setup.sql --explicit_defaults_for_timestamp=1 --default-authentication-plugin=mysql_native_password
     volumes:
       - ./server/setup.sql:/docker-entrypoint-initdb.d/setup.sql
     environment:
@@ -38,3 +36,9 @@ services:
       - "3307:3306"
     expose:
       - 3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pids_project_2024"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
