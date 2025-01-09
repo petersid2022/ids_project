@@ -1,0 +1,14 @@
+html,
+body {
+  background-color: #f0f0f5;
+  font-size: 1.35em;
+  color: #333;
+  padding: 10px;
+}
+input,
+button,
+form {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 1em;
+}
