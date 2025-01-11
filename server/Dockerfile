@@ -8,6 +8,6 @@ RUN go mod download
 
 COPY . .
 
-RUN go install github.com/air-verse/air@latest
+RUN CGO_ENABLED=0 GOOS=linux go install github.com/air-verse/air@latest
 
 CMD ["/go/bin/air"]
