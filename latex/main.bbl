@@ -1,0 +1,48 @@
+\begin{thebibliography}{1}
+
+\bibitem{go_2}
+Go~Documentation.
+\newblock Avoiding sql injection risk.
+\newblock \url{https://go.dev/doc/database/sql-injection}.
+\newblock [Ανακτήθηκε 13 Ιανουαρίου 2025].
+
+\bibitem{go}
+Go~Documentation.
+\newblock Go-mysql-driver.
+\newblock
+  \url{https://pkg.go.dev/github.com/go-sql-driver/mysql#section-readme}.
+\newblock [Ανακτήθηκε 13 Ιανουαρίου 2025].
+
+\bibitem{goto_sqlite}
+hackertarget.
+\newblock Zeek to sqlite.
+\newblock
+  \url{https://github.com/hackertarget/pcap-did-what/blob/master/zeek-docker/zeek-to-sqlite.py}.
+\newblock [Ανακτήθηκε 13 Ιανουαρίου 2025].
+
+\bibitem{zeek_2}
+The~University of~Texas~at San~Antonio.
+\newblock Zeek intrusion detection series, lab 1: Introduction to the
+  capabilities of zeek.
+\newblock
+  \url{https://research.cec.sc.edu/files/cyberinfra/files/Zeek_Lab_Series.pdf}.
+\newblock [Ανακτήθηκε 13 Ιανουαρίου 2025].
+
+\bibitem{BRO}
+C.~Sanders and J.~Smith.
+\newblock {\em Applied Network Security Monitoring}.
+\newblock Elsevier Inc., 2014.
+
+\bibitem{zeek_1}
+Zeek.
+\newblock Zeek documentation.
+\newblock \url{https://docs.zeek.org/en/master/}.
+\newblock [Ανακτήθηκε 13 Ιανουαρίου 2025].
+
+\bibitem{asfaleia}
+Συλλογικός {Τόμος}.
+\newblock {\em Ασφάλεια Πληροφοριών και
+  Συστημάτων στον Κυβερνοχώρο}.
+\newblock ΕΚΔΟΣΕΙΣ ΝΕΩΝ ΤΕΧΝΟΛΟΓΙΩΝ, 1 edition, 2021.
+
+\end{thebibliography}

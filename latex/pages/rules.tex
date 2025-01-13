@@ -1,0 +1,42 @@
+\subsubsection{Ανίχνευση Path Traversal}
+\begin{lstlisting}
+if (path_traversal_keywords in original_URI) {
+    print fmt("[ALERT] Potential Path traversal detected. 
+    Host: %s:%d, URI: %s", c$id$orig_h, c$id$orig_p, original_URI);
+}
+\end{lstlisting}
+Ο πρώτος κανόνας εξετάζει αν το \textbf{URI} (Uniform Resource Identifier) που περιλαμβάνεται στο αίτημα περιέχει λέξεις-κλειδιά που σχετίζονται με τεχνικές path traversal, όπως \texttt{ ../, ..\\, /etc/passwd} ή άλλες παρόμοιες ακολουθίες. Αν ανιχνευτεί τέτοια λέξη-κλειδί, εμφανίζεται ειδοποίη-ση που περιλαμβάνει τη διεύθυνση IP του αιτούντος, την θύρα προέλευσης και το \textbf{URI} που θεωρείται ύποπτο.
+\begin{lstlisting}
+[ALERT] Potential Path traversal detected.
+\end{lstlisting}
+περιλαμβάνοντας τη διεύθυνση IP (\texttt{c\$id\$orig\_h}), την θύρα (\texttt{c\$id\$orig\_p}), και το \textbf{URI}.
+
+Ο σκοπός αυτού του κανόνα είναι να εντοπίζει προσπάθειες παράκαμψης του προβλεπόμενου εύρους πρόσβασης σε αρχεία ή καταλόγους του διακομιστή. Αυτές οι επιθέσεις χρησιμοποιούνται συνήθως για την απόκτηση πρόσβασης σε ευαίσθητα δεδομένα ή αρχεία διαμόρφωσης που δεν θα έπρεπε να είναι προσβάσιμα από εξωτερικούς χρήστες.
+
+\subsubsection{Ανίχνευση Code Injection}
+\begin{lstlisting}
+if (code_injection_keywords in full_body) {
+    print fmt("[ALERT] Potential Code Injection detected. 
+    Host: %s:%d, Body: %s", c$id$orig_h, c$id$orig_p, full_body);
+}
+\end{lstlisting}
+Ο δεύτερος κανόνας ελέγχει το σώμα του αιτήματος (\textbf{full body}) για λέξεις-κλειδιά που υποδηλώνουν πιθανή \textbf{έγχυση κώδικα} (\textbf{Code Injection}), όπως \texttt{eval(), system(), ;} ή άλλες κακόβουλες εντολές. Αν τέτοια λέξη βρεθεί, εμφανίζεται ειδοποίηση που περιλαμβάνει τη διεύθυνση IP, την θύρα, και το πλήρες σώμα του αιτήματος.
+\begin{lstlisting}
+[ALERT] Potential Code Injection detected.
+\end{lstlisting}
+περιλαμβάνοντας τη διεύθυνση IP (\texttt{c\$id\$orig\_h}), την θύρα (\texttt{c\$id\$orig\_p}), και το πλήρες σώμα του αιτήματος (\texttt{full\_body}).
+Ο σκοπός αυτού του κανόνα είναι η αποτροπή επιθέσεων στις οποίες οι εισβολείς προσπαθούν να εκτελέσουν αυθαίρετο κώδικα στον διακομιστή, όπως εκτέλεση \textbf{Shell Commands}, \textbf{SQL Injection}, ή άλλες παρόμοιες επιθέσεις. Η ανίχνευση τέτοιων μοτίβων μπορεί να βοηθήσει στην πρόληψη ζημιών όπως η κλοπή δεδομένων ή η αλλοίωση λειτουργιών του συστήματος.
+
+\subsubsection{Έλεγχος μεγάλου Payload (buffer overflow)}
+\begin{lstlisting}
+if (|full_body| > payload_threshold) {
+    print fmt("[ALERT] Payload exceeds threshold. 
+    Host: %s:%d, Length: %s", c$id$orig_h, c$id$orig_p, |full_body|);
+}
+\end{lstlisting}
+Ο τρίτος κανόνας ελέγχει το μέγεθος του σώματος του αιτήματος (payload) και το συγκρίνει με ένα \textbf{προκαθορισμένο όριο} (\textbf{payload threshold}). Αν το μέγεθος υπερβαίνει αυτό το όριο, ενεργοποιείται ειδοποίηση που περιλαμβάνει τη διεύθυνση IP, την θύρα, και το μήκος του σώματος.
+\begin{lstlisting}
+[ALERT] Payload exceeds threshold.
+\end{lstlisting}
+περιλαμβάνοντας τη διεύθυνση IP, την θύρα, και το μέγεθος του σώματος.
+Ο σκοπός αυτού του κανόνα είναι να εντοπίσει περιπτώσεις όπου οι εισβολείς στέλνουν υπερβολικά μεγάλα δεδομένα σε μια προσπάθεια να προκαλέσουν ζημιά, όπως μέσω επιθέσεων \textbf{Βuffer Οverflow} ή κατάχρησης πόρων του διακομιστή.

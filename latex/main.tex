@@ -1,0 +1,148 @@
+\documentclass{article}
+
+% Language and Font Settings
+\usepackage{fontspec} % Use fontspec to load system fonts in XeTeX
+\usepackage{alphabeta}
+\usepackage{cite} % Greek letters to Latin encoding for XeTeX
+
+% Set main text font (GFS Didot for Greek)
+\setmainfont{Arial} % Sets the main font to GFS Didot for Greek
+
+% Set sans-serif font for section titles
+\newfontfamily\greeksf{Franklin Gothic Medium}
+\newfontfamily\greekduth{Franklin Gothic Medium}
+\newfontfamily\greektitle{Franklin Gothic Book}
+\newfontfamily\tabulars{Times New Roman}
+\newfontfamily\coding{Consolas}
+\newfontfamily\cambria{Cambria}
+
+% Section Font Settings
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\greeksf} 
+\titleformat*{\subsection}{\large\greeksf} 
+\titleformat*{\subsubsection}{\greeksf} 
+
+% Set page size and margins
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{indentfirst}
+\usepackage{array}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{caption}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{url}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{listings}
+\usepackage{wrapfig}
+\usepackage[bottom]{footmisc}
+\usepackage[letterspace=150]{microtype}
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=false,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\small\coding,
+  keywordstyle=\bfseries\color{red!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{gray},
+  stringstyle=\color{orange},
+}
+
+\lstdefinestyle{customasm}{
+  belowcaptionskip=1\baselineskip,
+  frame=L,
+  language=SQL,
+  basicstyle=\small\coding,
+  commentstyle=\itshape\color{purple!40!black},
+}
+
+\lstset{escapechar=@,style=customc}
+\renewcommand{\contentsname}{Περιεχόμενα}
+
+\renewcommand{\arraystretch}{2}
+
+\begin{document}
+
+\begin{titlepage}
+	\centering
+	\greekduth
+	\includegraphics[width=0.15\textwidth]{images/duth}\par\vspace{0.5cm}
+	{\large\textsc{ΔΗΜΟΚΡΙΤΕΙΟ ΠΑΝΕΠΙΣΤΗΜΙΟ ΘΡΑΚΗΣ}\par}
+	\vspace{0.1cm}
+	{\large\textsc{ΠΟΛΥΤΕΧΝΙΚΗ ΣΧΟΛΗ}\par}
+	\vspace{0.1cm}
+	{\large\textsc{ΤΜΗΜΑ ΗΛΕΚΤΡΟΛΟΓΩΝ ΜΗΧΑΝΙΚΩΝ ΚΑΙ ΜΗΧΑΝΙΚΩΝ ΥΠΟΛΟΓΙΣΤΩΝ}\par}
+	\vspace{4cm}
+	{\lsstyle\greektitle\large\textsc{ΑΣΦΑΛΕΙΑ ΣΥΣΤΗΜΑΤΩΝ ΥΠΟΛΟΓΙΣΤΩΝ}\par}
+	\vspace{0.25cm}
+	{\huge\bfseries Υλοποίηση IDS με χρήση του εργαλείου Zeek\par}
+	\vspace{0.25cm}
+	{\greektitle\large\textsc{ΕΡΓΑΣΙΑ ΕΞΑΜΗΝΟΥ}\par}
+	\vspace{2cm}
+	{Μπούρας Αντώνιος [ΑΕΜ: 58287]\\
+	\texttt{antobour1@ee.duth.gr}\\
+	Σιδέρης Πέτρος [ΑΕΜ: 58341]\\
+	\texttt{petrside@ee.duth.gr}\\
+	Ταχτατζής Αναστάσιος [ΑΕΜ: 58439]\\
+	\texttt{anastach2@ee.duth.gr}
+	\par}
+	\vfill
+	Υπεύθυνος καθηγητής:\par
+	Αναγνωστόπουλος Μάριος
+
+	\vfill
+
+% Bottom of the page
+	{\large 13 Ιανουαρίου, 2025\par}
+\end{titlepage}
+{
+  \hypersetup{linkcolor=black}
+  \tableofcontents
+}
+\newpage
+
+\section{Εισαγωγή}
+\input{pages/introduction}
+\nocite{*}
+
+\subsection{Περιγραφή του προβλήματος}
+\input{pages/problem}
+
+\subsection{Zeek}
+\input{pages/zeek}
+
+\newpage
+
+\section{Υλοποίηση}
+\subsection{Αρχικοποίηση}
+\input{pages/makeof}
+
+\subsection{Επιθέσεις}
+\input{pages/attacks}
+
+\subsection{Κανόνες}
+\input{pages/rules}
+
+\newpage
+
+\section{Στιγμιότυπα Οθόνης}
+\input{pages/screenshots}
+
+\newpage
+
+\section{Οπτικοποίηση}
+\input{pages/visualisation}
+
+\renewcommand\refname{Αναφορές}
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
