@@ -65,7 +65,7 @@ services:
       - /usr/share/alerts.zeek
     network_mode: host
     volumes:
-      - "./docs/zeek/alerts.zeek:/usr/share/alerts.zeek"
+      - "./docs/alerts.zeek:/usr/share/alerts.zeek"
       - "./scripts/zeek_to_sqlite.py:/zeek_to_sqlite.py"
     cap_add:
       - NET_ADMIN
